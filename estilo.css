@@ -1,0 +1,321 @@
+/* --- ESTILOS GENERALES --- */
+:root {
+    --bg-color: #0f0f0f;
+    --text-color: #f0f0f0;
+    --accent-color: #6c63ff; /* Tono violeta digital */
+    --secondary-bg: #1a1a1a;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: rgba(15, 15, 15, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+.btn-contact {
+    padding: 10px 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.btn-contact:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f0f 70%);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--accent-color);
+    background: -webkit-linear-gradient(45deg, #6c63ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.btn-main {
+    padding: 15px 35px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.6);
+}
+
+/* --- SERVICIOS --- */
+.services {
+    padding: 80px 5%;
+    background-color: var(--secondary-bg);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--bg-color);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #aaa;
+}
+
+/* --- CONTACTO --- */
+.contact {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-text {
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+input, textarea {
+    padding: 15px;
+    background-color: var(--secondary-bg);
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.submit-btn {
+    border: none;
+    cursor: pointer;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #777;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    nav ul { display: none; } /* Oculta menú en móvil simple */
+}
+
+/* --- AGREGAR AL FINAL DE ESTILO.CSS --- */
+
+/* Hero más pequeño para sub-páginas */
+.small-hero {
+    height: 50vh; /* Mitad de altura que el home */
+    min-height: 400px;
+}
+
+/* --- SECCIÓN DE PRECIOS --- */
+.pricing {
+    padding: 80px 5%;
+    background-color: var(--bg-color); /* Fondo oscuro */
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.price-card {
+    background-color: var(--secondary-bg);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #333;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo especial para el plan popular */
+.price-card.popular {
+    border-color: var(--accent-color);
+    transform: scale(1.05); /* Un poco más grande */
+    background: linear-gradient(145deg, #1a1a1a, #252525);
+    z-index: 10;
+}
+
+.tag {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.price-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 20px 0;
+}
+
+.desc {
+    color: #888;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.features {
+    text-align: left;
+    margin-bottom: 40px;
+    flex-grow: 1; /* Empuja el botón hacia abajo */
+}
+
+.features li {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.btn-price {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #555;
+    border-radius: 50px;
+    margin-top: auto; /* Asegura que el botón quede abajo */
+}
+
+.btn-price:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Ajuste Responsive para la tarjeta destacada */
+@media (max-width: 900px) {
+    .price-card.popular {
+        transform: scale(1);
+    }
+}
