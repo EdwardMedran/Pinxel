@@ -320,11 +320,11 @@ footer {
     }
 }
 
-/* --- ESTILOS DEL MENÚ MÓVIL --- */
+/* --- RESPONSIVE Y MENÚ MÓVIL (CORREGIDO) --- */
 
 /* 1. Ocultar elementos móviles por defecto en PC */
 .menu-toggle {
-    display: none;
+    display: none; /* Oculto en escritorio */
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
@@ -338,57 +338,68 @@ footer {
 }
 
 .mobile-btn {
-    display: none; /* Oculto en PC */
+    display: none; /* Oculto en escritorio */
 }
 
-/* 2. Media Query para Celulares/Tablets */
+/* 2. AJUSTES PARA CELULAR (Max 768px) */
 @media (max-width: 768px) {
     
-    /* Mostrar el icono hamburguesa */
-    .menu-toggle {
-        display: flex;
-    }
+    .hero h1 { font-size: 2.5rem; }
 
-    /* Ocultar el botón de cotizar original para que no estorbe */
-    .desktop-btn {
-        display: none;
-    }
-
-    /* Estilo del menú desplegable */
-    .nav-list {
+    /* --- ARREGLO DE POSICIÓN --- */
+    /* Sacamos el NAV del flujo normal para que el Header solo vea 
+       el Logo y el Botón, enviándolos a las esquinas */
+    nav {
         position: absolute;
-        top: 70px; /* Altura del header aprox */
+        top: 100%; /* Justo debajo del header */
         left: 0;
         width: 100%;
-        height: 0; /* Cerrado por defecto */
-        background-color: rgba(15, 15, 15, 0.98);
+        z-index: 999;
+    }
+
+    /* --- ARREGLO DE VISIBILIDAD --- */
+    .nav-list {
+        display: flex; /* IMPORTANTE: Forzamos que exista */
         flex-direction: column;
         align-items: center;
-        overflow: hidden; /* Oculta el contenido al estar cerrado */
+        background-color: rgba(15, 15, 15, 0.98);
+        width: 100%;
+        height: 0; /* Cerrado por defecto */
+        overflow: hidden; /* Oculta contenido si altura es 0 */
         transition: height 0.4s ease;
         border-bottom: 1px solid #333;
     }
 
-    /* Clase que activa el JS para abrir el menú */
+    /* Cuando JS agrega la clase 'active', abrimos la altura */
     .nav-list.active {
-        height: 300px; /* Altura cuando está abierto */
+        height: 350px;
         padding: 20px 0;
     }
 
+    /* Animación de los textos */
     .nav-list li {
         margin: 15px 0;
-        opacity: 0; /* Animación de entrada */
+        opacity: 0;
         transform: translateY(-20px);
         transition: 0.4s;
     }
 
-    /* Retardo para que los elementos aparezcan uno por uno */
     .nav-list.active li {
         opacity: 1;
         transform: translateY(0);
     }
 
-    /* Mostrar el botón cotizar DENTRO del menú */
+    /* Mostrar botón hamburguesa */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Ocultar botón cotizar de escritorio */
+    .desktop-btn {
+        display: none;
+    }
+
+    /* Mostrar botón cotizar DENTRO del menú */
     .mobile-btn {
         display: block;
         margin-top: 10px;
