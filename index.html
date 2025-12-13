@@ -58,9 +58,9 @@
         <h2 class="section-title">Trabajemos Juntos</h2>
         <div class="contact-container">
             <p class="contact-text">Cuéntanos sobre tu proyecto. Te responderemos en menos de 24 horas.</p>
-            <form>
+            <form action="https://formspree.io/f/xldqzapb" method="post">
                 <input type="text" placeholder="Tu Nombre" required>
-                <input type="email" placeholder="Tu Correo Electrónico" required>
+                <input type="tel" id="celular" name="phone" placeholder="999 000 000" maxlength="11" required>
                 <textarea rows="5" placeholder="Detalles de tu proyecto..." required></textarea>
                 <button type="submit" class="btn-main submit-btn">Enviar Mensaje</button>
             </form>
@@ -90,5 +90,29 @@
     <a href="https://wa.me/51999999999?text=Hola%20Pinxel,%20quiero%20información%20sobre%20una%20web" class="btn-whatsapp" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
+
+    <script>
+    // Script para formatear el celular (999 999 999)
+    const inputCelular = document.getElementById('celular');
+
+    inputCelular.addEventListener('input', function (e) {
+        // 1. Quitar cualquier caracter que no sea número
+        let valor = e.target.value.replace(/\D/g, '');
+        
+        // 2. Limitar a 9 dígitos máximo
+        valor = valor.substring(0, 9);
+        
+        // 3. Agregar los espacios cada 3 números
+        let numeroFormateado = valor;
+        if (valor.length > 6) {
+            numeroFormateado = valor.substring(0, 3) + ' ' + valor.substring(3, 6) + ' ' + valor.substring(6);
+        } else if (valor.length > 3) {
+            numeroFormateado = valor.substring(0, 3) + ' ' + valor.substring(3);
+        }
+
+        // 4. Asignar el valor formateado al input
+        e.target.value = numeroFormateado;
+    });
+</script>
 </body>
 </html>
