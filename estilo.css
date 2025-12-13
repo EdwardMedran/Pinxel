@@ -319,3 +319,243 @@ footer {
         transform: scale(1);
     }
 }
+
+/* --- ESTILOS DEL MENÚ MÓVIL --- */
+
+/* 1. Ocultar elementos móviles por defecto en PC */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: 0.3s;
+}
+
+.mobile-btn {
+    display: none; /* Oculto en PC */
+}
+
+/* 2. Media Query para Celulares/Tablets */
+@media (max-width: 768px) {
+    
+    /* Mostrar el icono hamburguesa */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Ocultar el botón de cotizar original para que no estorbe */
+    .desktop-btn {
+        display: none;
+    }
+
+    /* Estilo del menú desplegable */
+    .nav-list {
+        position: absolute;
+        top: 70px; /* Altura del header aprox */
+        left: 0;
+        width: 100%;
+        height: 0; /* Cerrado por defecto */
+        background-color: rgba(15, 15, 15, 0.98);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden; /* Oculta el contenido al estar cerrado */
+        transition: height 0.4s ease;
+        border-bottom: 1px solid #333;
+    }
+
+    /* Clase que activa el JS para abrir el menú */
+    .nav-list.active {
+        height: 300px; /* Altura cuando está abierto */
+        padding: 20px 0;
+    }
+
+    .nav-list li {
+        margin: 15px 0;
+        opacity: 0; /* Animación de entrada */
+        transform: translateY(-20px);
+        transition: 0.4s;
+    }
+
+    /* Retardo para que los elementos aparezcan uno por uno */
+    .nav-list.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Mostrar el botón cotizar DENTRO del menú */
+    .mobile-btn {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .btn-contact-mobile {
+        padding: 10px 30px;
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+}
+
+/* --- AGREGAR AL FINAL DE ESTILO.CSS --- */
+
+/* --- SECCIÓN PORTAFOLIO --- */
+.portfolio {
+    padding: 80px 5%;
+    background-color: var(--bg-color);
+}
+
+.portfolio-grid {
+    display: grid;
+    /* Crea columnas automáticamente. Mínimo 350px de ancho cada una */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta del Proyecto */
+.project-card {
+    background-color: var(--secondary-bg);
+    border-radius: 15px;
+    overflow: hidden; /* Para que la imagen no se salga de las esquinas redondeadas */
+    border: 1px solid #333;
+    transition: 0.4s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px); /* Levanta la tarjeta al pasar el mouse */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de la imagen */
+.project-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    transition: transform 0.5s ease;
+}
+
+/* Efecto Zoom en la imagen al pasar el mouse */
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+/* Capa oscura sobre la imagen (Overlay) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.8); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Invisible por defecto */
+    transition: 0.4s ease;
+}
+
+/* Mostrar overlay al pasar el mouse */
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+/* Botón para ver el sitio */
+.btn-view {
+    padding: 12px 25px;
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.btn-view:hover {
+    background-color: var(--accent-color);
+}
+
+/* Información del proyecto */
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.category {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.description {
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+/* Sección CTA Final */
+.cta-section {
+    padding: 80px 5%;
+    text-align: center;
+    background: linear-gradient(to top, var(--secondary-bg), var(--bg-color));
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Ajuste responsive para celulares muy pequeños */
+@media (max-width: 450px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+    .project-image {
+        height: 200px; /* Imagen más baja en celular */
+    }
+}
+
+/* --- BOTÓN FLOTANTE WHATSAPP --- */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2000; /* Para que esté encima de todo */
+    transition: transform 0.3s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.1);
+}
+
+.btn-whatsapp img {
+    width: 35px;
+    height: 35px;
+}

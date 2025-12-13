@@ -2,22 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios y Precios | Pinxel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Pinxel | Servicios y Precios</title>
+    <link rel="icon" type="image/png" href="img/Gemini_Generated_Image_ftbvt8ftbvt8ftbv.png">
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">Pin<span>xel</span></div>
+        <a href="index.html" class="logo">Pin<span>xel</span></a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li><a href="index.html">Inicio</a></li> 
                 <li><a href="servicios.html" class="active">Servicios</a></li>
-                <li><a href="index.html#proyectos">Proyectos</a></li> 
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li class="mobile-btn"><a href="index.html#contacto" class="btn-contact-mobile">Cotizar</a></li>
             </ul>
         </nav>
-        <a href="index.html#contacto" class="btn-contact">Cotizar</a>
+        
+        <a href="index.html#contacto" class="btn-contact desktop-btn">Cotizar</a>
     </header>
 
     <section class="hero small-hero">
@@ -96,5 +106,24 @@
         <p>&copy; 2025 Pinxel. Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+        
+        // Cierra el menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-list li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+
+    <a href="https://wa.me/51999999999?text=Hola%20Pinxel,%20quiero%20información%20sobre%20una%20web" class="btn-whatsapp" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 </body>
 </html>

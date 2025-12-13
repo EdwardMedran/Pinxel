@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel | Portafolio de Proyectos</title>
+    <link rel="icon" type="image/png" href="img/Gemini_Generated_Image_ftbvt8ftbvt8ftbv.png">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Pin<span>xel</span></a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li> 
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                <li class="mobile-btn"><a href="index.html#contacto" class="btn-contact-mobile">Cotizar</a></li>
+            </ul>
+        </nav>
+        
+        <a href="index.html#contacto" class="btn-contact desktop-btn">Cotizar</a>
+    </header>
+
+    <section class="hero small-hero">
+        <h1>Nuestro <br><span>Portafolio</span></h1>
+        <p>Una muestra de cómo ayudamos a las marcas a destacar en el mundo digital.</p>
+    </section>
+
+    <section class="portfolio">
+        <h2 class="section-title">Trabajos Recientes</h2>
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="img/Captura de pantalla 2025-12-13 121916.png" alt="Website Restaurante">
+                    <div class="overlay">
+                        <a href="#" class="btn-view">Ver Sitio</a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Centro de Psicologia Integral</h3>
+                    <p class="category">Diseño Web / E-commerce</p>
+                    <p class="description">Rediseño completo con sistema de citas y servicios.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="img/Captura de pantalla 2025-12-13 121732.png" alt="Landing Page Abogados">
+                    <div class="overlay">
+                        <a href="#" class="btn-view">Ver Sitio</a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Confecciones Erica</h3>
+                    <p class="category">Landing Page</p>
+                    <p class="description">Página web enfocada a mostrar los servicios y contactar para aplicar a los servicios.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="img/Captura de pantalla 2025-12-13 121829.png" alt="Blog Tech">
+                    <div class="overlay">
+                        <a href="#" class="btn-view">Ver Sitio</a>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Negociaciones Paola</h3>
+                    <p class="category">Blog / CMS</p>
+                    <p class="description">Pagina de Empresa de Transportes con sistema de formulario para conectar con la empresaw.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>¿Listo para tu propio sitio web increíble?</h2>
+        <a href="index.html#contacto" class="btn-main">Hablemos de tu idea</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pinxel. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-list li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+
+    <a href="https://wa.me/51999999999?text=Hola%20Pinxel,%20quiero%20información%20sobre%20una%20web" class="btn-whatsapp" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+</body>
+</html>
