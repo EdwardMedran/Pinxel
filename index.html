@@ -31,23 +31,36 @@
     </header>
 
     <section class="hero" id="inicio">
-        <h1>Diseño Web que <br><span>Define tu Marca</span></h1>
-        <p>En <strong>Pinxel</strong> fusionamos arte digital y tecnología para crear experiencias web inolvidables. Tu negocio merece destacar.</p>
-        <a href="#contacto" class="btn-main">Empezar Proyecto</a>
+        <div class="hero-content">
+            <span class="badge-new">✨ Agencia Digital Creativa</span>
+            <h1>Diseño Web que <br><span>Define tu Marca</span></h1>
+            <p>En <strong>Pinxel</strong> fusionamos arte digital y tecnología para crear experiencias web inolvidables. Convierte visitantes en clientes hoy mismo.</p>
+            
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-main">Empezar Proyecto</a>
+                <a href="proyectos.html" class="btn-outline">Ver Portafolio</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" alt="Diseño Web Futuro">
+            
+            <div class="hero-glow"></div>
+        </div>
     </section>
 
     <section class="services" id="servicios">
         <h2 class="section-title">Nuestros Servicios</h2>
         <div class="services-grid">
-            <div class="card">
+            <div class="card reveal">
                 <h3>💻 Diseño Web a Medida</h3>
                 <p>Páginas únicas diseñadas desde cero, optimizadas para capturar la esencia de tu marca y convertir visitantes en clientes.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>📱 Responsive Design</h3>
                 <p>Tu sitio web se verá perfecto en cualquier dispositivo: móviles, tablets y computadoras de escritorio.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>🚀 Optimización y SEO</h3>
                 <p>Código limpio y veloz para que Google ame tu página tanto como tus clientes.</p>
             </div>
@@ -56,15 +69,45 @@
 
     <section class="contact" id="contacto">
         <h2 class="section-title">Trabajemos Juntos</h2>
-        <div class="contact-container">
-            <p class="contact-text">Cuéntanos sobre tu proyecto. Te responderemos en menos de 24 horas.</p>
+        <div class="contact-container reveal">
+            <p class="contact-text">Cuéntanos sobre tu proyecto. Responde estas preguntas para darte una cotización precisa.</p>
+            
             <form id="contact-form" action="https://formspree.io/f/xldqzapb" method="post">
-                <input type="hidden" name="_subject" value="¡Nuevo Cliente Potencial desde Pinxel!">
-                <input type="text" name="Nombre" placeholder="Tu Nombre" required>
-                <input type="tel" id="celular" name="Celular" placeholder="999 000 000" maxlength="11" required>
-                <textarea rows="5" name="Detalles del proyecto" placeholder="Detalles de tu proyecto..." required></textarea>
-                <button type="submit" class="btn-main submit-btn">Enviar Mensaje</button>
-                <p id="status" style="display: none; margin-top: 15px; font-weight: bold;"></p>
+                <input type="hidden" name="_subject" value="¡Nuevo Lead Calificado - Pinxel!">
+                
+                <div class="form-row">
+                    <input type="text" name="Nombre" placeholder="Tu Nombre" required class="input-field">
+                    <input type="tel" id="celular" name="Celular" placeholder="Celular / WhatsApp" maxlength="11" required class="input-field">
+                </div>
+
+                <div class="form-row">
+                    <div class="select-wrapper">
+                        <select name="Tipo de Servicio" required class="input-field">
+                            <option value="" disabled selected>¿Qué servicio buscas?</option>
+                            <option value="Landing Page">Landing Page (Una página)</option>
+                            <option value="Sitio Corporativo">Sitio Web Corporativo</option>
+                            <option value="E-commerce">Tienda Online</option>
+                            <option value="Rediseño">Rediseño Web</option>
+                            <option value="Otro">Otro / Consultoría</option>
+                        </select>
+                    </div>
+
+                    <div class="select-wrapper">
+                        <select name="Presupuesto" required class="input-field">
+                            <option value="" disabled selected>Presupuesto Estimado</option>
+                            <option value="Bajo">S/. 200 - S/. 500</option>
+                            <option value="Medio">S/. 500 - S/. 1,500</option>
+                            <option value="Alto">Más de S/. 1,500</option>
+                            <option value="Por definir">Aún no lo tengo claro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <textarea rows="5" name="Detalles del proyecto" placeholder="Cuéntanos más detalles: Referencias que te gusten, objetivos, competidores..." required class="input-field"></textarea>
+                
+                <button type="submit" class="btn-main submit-btn">Solicitar Cotización</button>
+                
+                <p id="status" style="display: none; margin-top: 15px; font-weight: bold; text-align: center;"></p>
             </form>
         </div>
     </section>
@@ -108,6 +151,119 @@
     </a>
 
     <script>
+
+        /* --- SCRIPT PARA CUSTOM SELECTS --- */
+    function initCustomSelects() {
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        /* Buscamos cualquier div con la clase "select-wrapper" */
+        x = document.getElementsByClassName("select-wrapper");
+        l = x.length;
+        
+        for (i = 0; i < l; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            if (!selElmnt) continue; // Si no hay select, saltar
+
+            ll = selElmnt.length;
+            
+            /* Crear el div que actuará como el select visible */
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected custom-select");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            
+            /* Crear el contenedor de opciones (lista) */
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            
+            for (j = 1; j < ll; j++) {
+                /* Por cada opción del select original, crear un div nuevo */
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                
+                /* Guardar el índice original para sincronizar clics */
+                c.setAttribute("data-value", selElmnt.options[j].value);
+                
+                c.addEventListener("click", function(e) {
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    
+                    for (i = 0; i < sl; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            h.style.color = "white"; // Cambiar color a blanco al seleccionar
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            yl = y.length;
+                            for (k = 0; k < yl; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            
+            /* Evento para abrir/cerrar al hacer clic */
+            a.addEventListener("click", function(e) {
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+        
+        /* Función para cerrar todos los selects si haces clic fuera */
+        function closeAllSelect(elmnt) {
+            var x, y, i, xl, yl, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            xl = x.length;
+            yl = y.length;
+            for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-arrow-active");
+                }
+            }
+            for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
+            }
+        }
+        
+        document.addEventListener("click", closeAllSelect);
+    }
+
+    // Ejecutar la función
+    initCustomSelects();
+
+    /* --- SCRIPT DE SCROLL REVEAL --- */
+    window.addEventListener('scroll', reveal);
+
+    function reveal() {
+        var reveals = document.querySelectorAll('.reveal');
+
+        for (var i = 0; i < reveals.length; i++) {
+            var windowheight = window.innerHeight;
+            var revealtop = reveals[i].getBoundingClientRect().top;
+            var revealpoint = 150; // Ajusta cuándo empieza la animación
+
+            if (revealtop < windowheight - revealpoint) {
+                reveals[i].classList.add('active');
+            } else {
+                reveals[i].classList.remove('active'); // Opcional: quita esto si solo quieres que se anime una vez
+            }
+        }
+    }
+
     // --- PARTE 1: FORMATEO DE CELULAR ---
     const inputCelular = document.getElementById('celular');
 
