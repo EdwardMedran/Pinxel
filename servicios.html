@@ -45,19 +45,19 @@
     <section class="services">
         <h2 class="section-title">¿Qué incluye nuestro trabajo?</h2>
         <div class="services-grid">
-            <div class="card">
+            <div class="card reveal">
                 <h3>🎨 Diseño UI/UX</h3>
                 <p>No solo hacemos que se vea bonito. Diseñamos interfaces intuitivas pensando en la experiencia del usuario para maximizar la retención.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>🛠️ Desarrollo Full-Stack</h3>
                 <p>Desde landing pages sencillas hasta aplicaciones web complejas con bases de datos y paneles de administración.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>⚡ Mantenimiento Web</h3>
                 <p>Actualizaciones de seguridad, copias de seguridad mensuales y monitoreo 24/7 para que tu sitio nunca caiga.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>🔍 Auditoría SEO</h3>
                 <p>Analizamos tu sitio actual y optimizamos la estructura para mejorar tu ranking en los motores de búsqueda.</p>
             </div>
@@ -125,24 +125,43 @@
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navList = document.querySelector('.nav-list');
-
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-        
-        // Cierra el menú al hacer clic en un enlace
-        document.querySelectorAll('.nav-list li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-    </script>
-
     <a href="https://wa.me/51922544533?text=Hola%20Pinxel,%20quiero%20información%20sobre%20una%20web" class="btn-whatsapp" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
+
+    <script>
+        /* --- SCRIPT DE MENU Y SCROLL REVEAL --- */
+        
+        // 1. Código del Menú Móvil (si no lo tienes ya en un archivo separado)
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+        }
+
+        // 2. SCRIPT DE ANIMACIÓN (SCROLL REVEAL)
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150; 
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Detectar scroll
+        window.addEventListener('scroll', reveal);
+        
+        // ¡IMPORTANTE! Ejecutar una vez al cargar la página
+        // Para que lo que ya está visible aparezca sin mover el mouse
+        reveal(); 
+    </script>
 </body>
 </html>

@@ -46,7 +46,7 @@
         <h2 class="section-title">Catalogo de Referencia</h2>
         <div class="portfolio-grid">
             
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/Feane.png" alt="Website Restaurante">
                     <div class="overlay">
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/Webuild.png" alt="Webiuld">
                     <div class="overlay">
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/UpConstruction.png" alt="Pagina web Contructora">
                     <div class="overlay">
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-             <div class="project-card">
+             <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/Raising.png" alt="Website Restaurante">
                     <div class="overlay">
@@ -102,7 +102,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/Restoran.png" alt="Landing Page Abogados">
                     <div class="overlay">
@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-image">
                     <img src="img/Organic.png" alt="Blog Tech">
                     <div class="overlay">
@@ -157,23 +157,43 @@
         </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navList = document.querySelector('.nav-list');
-
-        menuToggle.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-list li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-    </script>
-
     <a href="https://wa.me/51922544533?text=Hola%20Pinxel,%20quiero%20información%20sobre%20una%20web" class="btn-whatsapp" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
+
+    <script>
+        /* --- SCRIPT DE MENU Y SCROLL REVEAL --- */
+        
+        // 1. Código del Menú Móvil (si no lo tienes ya en un archivo separado)
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+        }
+
+        // 2. SCRIPT DE ANIMACIÓN (SCROLL REVEAL)
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150; 
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Detectar scroll
+        window.addEventListener('scroll', reveal);
+        
+        // ¡IMPORTANTE! Ejecutar una vez al cargar la página
+        // Para que lo que ya está visible aparezca sin mover el mouse
+        reveal(); 
+    </script>
 </body>
 </html>
